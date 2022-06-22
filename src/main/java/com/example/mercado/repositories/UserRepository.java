@@ -1,4 +1,4 @@
-package com.example.mercado.repository;
+package com.example.mercado.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

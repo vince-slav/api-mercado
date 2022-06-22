@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.mercado.entities.User;
-import com.example.mercado.repository.UserRepository;
+import com.example.mercado.repositories.UserRepository;
 
 @Service
 public class UserService {
