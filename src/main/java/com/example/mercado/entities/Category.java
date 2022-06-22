@@ -1,14 +1,18 @@
 package com.example.mercado.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_category")
@@ -19,9 +23,13 @@ public class Category implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	
+
+	@JsonIgnore
+	@ManyToMany(mappedBy = "categories")
+	private Set<Product> product = new HashSet<>();
+
 	public Category() {
-		
+
 	}
 
 	public Category(Integer id, String name) {
@@ -46,6 +54,11 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
+	@ManyToMany(mappedBy = "categories")
+	public Set<Product> getProduct() {
+		return product;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -62,6 +75,5 @@ public class Category implements Serializable {
 		Category other = (Category) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
+
 }
